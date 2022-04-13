@@ -1,6 +1,9 @@
 package com.ufrgs;
 
 import static com.raylib.Raylib.*;
+
+import org.bytedeco.javacpp.BytePointer;
+
 import static com.raylib.Jaylib.*;
 
 public class Flappy{
@@ -21,7 +24,7 @@ public class Flappy{
 
 			atualizar();
 			renderizar();
-
+            
 			if(janela.deveFechar() == true) {
 				rodando = false;
 			}
@@ -65,9 +68,11 @@ public class Flappy{
 		janela = new Janela("Flappy Bird");
 		SetTargetFPS(60);
         
-        passarinho = new Sprite("C:/Users/Leonardo/Desktop/UFRGS/Java/Trabalho Final/jaylib-maven-example-project-master/src/main/java/com/ufrgs/resources/passarinho.png");
-        fundo1 = new Sprite("C:/Users/Leonardo/Desktop/UFRGS/Java/Trabalho Final/jaylib-maven-example-project-master/src/main/java/com/ufrgs/resources/fundo.png");
-        fundo2 = new Sprite("C:/Users/Leonardo/Desktop/UFRGS/Java/Trabalho Final/jaylib-maven-example-project-master/src/main/java/com/ufrgs/resources/fundo.png");
+        
+        //ChangeDirectory("C:/Users/Leonardo/Documents/Code/flappy/src/main/java/com/ufrgs/resources");
+        passarinho = new Sprite("src/main/resources/passarinho.png");
+        fundo1 = new Sprite("src/main/resources/fundo.png");
+        fundo2 = new Sprite("src/main/resources/fundo.png");
         
         fundo2.mover(1180, 0);
 		rodando = true;

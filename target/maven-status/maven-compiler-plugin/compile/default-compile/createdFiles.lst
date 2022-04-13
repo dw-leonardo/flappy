@@ -1,12 +1,4 @@
-examples\TexturesBunnymarkMoreJavaLike.class
-examples\TexturesBunnymarkMoreJavaLike$Bunny.class
-examples\TexturesBunnymark.class
-examples\TexturesBunnymarkMoreJavaLike$Vec2.class
-examples\HeightMap.class
-com\ufrgs\Main.class
-examples\CubicMap.class
-examples\TexturesBunnymarkMoreJavaLike$Col.class
 com\ufrgs\Sprite.class
-examples\TexturesBunnymark$Bunny.class
 com\ufrgs\Flappy.class
 com\ufrgs\Janela.class
+com\ufrgs\Main.class
