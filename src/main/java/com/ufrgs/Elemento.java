@@ -3,12 +3,12 @@ package com.ufrgs;
 import static com.raylib.Raylib.Texture;
 import static com.raylib.Jaylib.*;
 
-public class Sprite {
+public class Elemento {
 
     private Vector2 pos;
     private Texture textura;
 
-    public Sprite(String caminho) {
+    public Elemento(String caminho) {
         this.pos = new Vector2(0,0);
         this.textura = LoadTexture(caminho);
     }

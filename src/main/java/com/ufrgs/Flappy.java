@@ -1,7 +1,8 @@
 package com.ufrgs;
 
-import static com.raylib.Raylib.*;
+import java.util.*;
 
+import static com.raylib.Raylib.*;
 import static com.raylib.Jaylib.*;
 
 public class Flappy{
@@ -12,9 +13,9 @@ public class Flappy{
 	private Janela janela;
     //janela na qual o jogo roda
 
-    private Sprite passarinho;
-    private Sprite fundo1;
-    private Sprite fundo2;
+    private Elemento passarinho;
+    private Elemento fundo1;
+    private Elemento fundo2;
 
 	private void rodar() {
 		while(rodando) {
@@ -68,9 +69,9 @@ public class Flappy{
         
         
         //ChangeDirectory("C:/Users/Leonardo/Documents/Code/flappy/src/main/java/com/ufrgs/resources");
-        passarinho = new Sprite("src/main/resources/passarinho.png");
-        fundo1 = new Sprite("src/main/resources/fundo.png");
-        fundo2 = new Sprite("src/main/resources/fundo.png");
+        passarinho = new Elemento("src/main/resources/passarinho.png");
+        fundo1 = new Elemento("src/main/resources/fundo.png");
+        fundo2 = new Elemento("src/main/resources/fundo.png");
         
         fundo2.mover(1180, 0);
 		rodando = true;
