@@ -2,8 +2,6 @@ package com.ufrgs;
 
 import static com.raylib.Raylib.*;
 
-import org.bytedeco.javacpp.BytePointer;
-
 import static com.raylib.Jaylib.*;
 
 public class Flappy{
