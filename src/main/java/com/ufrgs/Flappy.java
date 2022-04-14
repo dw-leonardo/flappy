@@ -14,8 +14,8 @@ public class Flappy{
     //janela na qual o jogo roda
 
     private Passarinho passarinho;
-    private Fundo fundo1;
-    private Fundo fundo2;
+    private Cenario fundo1;
+    private Cenario fundo2;
 
     private ArrayList<ElementoGrafico> graficos;
 
@@ -46,19 +46,7 @@ public class Flappy{
     }
 
 	private void atualizar() {
-        
-        if(fundo1.getPosX() <= -1200){
-            fundo1.mover(fundo2.getPosX()+1180,0);
-        } else {
-            fundo1.mover(fundo1.getPosX()-1, fundo1.getPosY());
-        }
 
-        if(fundo2.getPosX() <= -1200){
-            fundo2.mover(fundo1.getPosX()+1180,0);
-        } else {
-            fundo2.mover(fundo2.getPosX()-1, fundo2.getPosY());
-        }
-        
         passarinho.atualizar();
         fundo1.atualizar();
         fundo2.atualizar();
@@ -81,10 +69,10 @@ public class Flappy{
         passarinho = new Passarinho("src/main/resources/passarinho.png");
         graficos.add(passarinho);
 
-        fundo1 = new Fundo("src/main/resources/fundo.png", 1);
+        fundo1 = new Cenario("src/main/resources/fundo.png", 1);
         graficos.add(fundo1);
 
-        fundo2 = new Fundo("src/main/resources/fundo.png", 1);
+        fundo2 = new Cenario("src/main/resources/fundo.png", 1);
         graficos.add(fundo2);
 
         fundo2.mover(1180, 0);

@@ -18,7 +18,7 @@ public class Passarinho extends ElementoGrafico{
         mover(getPosX(), getPosY() + vVertical);
 
         if(IsKeyPressed(KEY_SPACE)) {
-            vVertical = -5;
+            vVertical = -6;
         }
     }
 }
