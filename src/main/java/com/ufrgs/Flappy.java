@@ -39,17 +39,18 @@ public class Flappy{
 	}
 
     private void fechar() {
-        passarinho.descarregar();
-        fundo1.descarregar();
-        fundo2.descarregar();
+
+        for(ElementoGrafico i : graficos){
+            i.descarregar();
+        }
 
     }
 
 	private void atualizar() {
-
-        passarinho.atualizar();
-        fundo1.atualizar();
-        fundo2.atualizar();
+        
+        for(ElementoGrafico i : graficos){
+            i.atualizar();
+        }
 
 	}
 	

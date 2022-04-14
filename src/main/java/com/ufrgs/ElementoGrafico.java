@@ -1,13 +1,13 @@
 package com.ufrgs;
 
-import static com.raylib.Raylib.Texture;
+//import static com.raylib.Raylib.Texture;
 import static com.raylib.Jaylib.*;
 
 public class ElementoGrafico {
 
-    private Vector2 pos;
-    private Vector2 col;
-    private Texture textura;
+    protected Vector2 pos;
+    protected Vector2 col;
+    protected Texture textura;
 
     public ElementoGrafico(String caminho) {
         this.pos = new Vector2(0,0);
@@ -18,9 +18,14 @@ public class ElementoGrafico {
         UnloadTexture(this.textura);
     }   
 
+    public void atualizar() {
+
+    }
+
     public void renderizar(double escala){
         DrawTextureEx(this.textura, this.pos, 0, (float) escala, WHITE);
     }
+
 
     public void mover(double x, double y) {
         pos.x((float) x);
@@ -28,6 +33,12 @@ public class ElementoGrafico {
     }
 
     public boolean testaColisao(ElementoGrafico e) {
+        if((pos.x() < e.getPosX()) && (pos.y() < e.getPosY())) {
+            if(col.x() > e.getPosX() && col.y() > e.getPosY()) {
+                return true;
+            }
+        }
+
         return false;
     }
 

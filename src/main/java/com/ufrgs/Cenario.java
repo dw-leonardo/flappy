@@ -1,5 +1,8 @@
 package com.ufrgs;
 
+import static com.raylib.Raylib.*;
+import static com.raylib.Jaylib.*;
+
 public class Cenario extends ElementoGrafico{
 
     private double vScroll;
@@ -10,7 +13,10 @@ public class Cenario extends ElementoGrafico{
     }
 
     public void atualizar() {
-        this.mover(getPosX() - 1, getPosY());
+        mover(getPosX() - 1, 0);
+        if(pos.x() < -1200) {
+            mover(1180, 0);
+        }
     }
 
 }
