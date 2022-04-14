@@ -3,12 +3,13 @@ package com.ufrgs;
 import static com.raylib.Raylib.Texture;
 import static com.raylib.Jaylib.*;
 
-public class Elemento {
+public class ElementoGrafico {
 
     private Vector2 pos;
+    private Vector2 col;
     private Texture textura;
 
-    public Elemento(String caminho) {
+    public ElementoGrafico(String caminho) {
         this.pos = new Vector2(0,0);
         this.textura = LoadTexture(caminho);
     }
@@ -22,8 +23,12 @@ public class Elemento {
     }
 
     public void mover(double x, double y) {
-        pos.x((float)x);
-        pos.y((float)y);
+        pos.x((float) x);
+        pos.y((float) y);
+    }
+
+    public boolean testaColisao(ElementoGrafico e) {
+        return false;
     }
 
     public double getPosX() {

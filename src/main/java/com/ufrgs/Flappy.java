@@ -1,6 +1,6 @@
 package com.ufrgs;
 
-import java.util.*;
+import java.util.ArrayList;
 
 import static com.raylib.Raylib.*;
 import static com.raylib.Jaylib.*;
@@ -13,9 +13,15 @@ public class Flappy{
 	private Janela janela;
     //janela na qual o jogo roda
 
-    private Elemento passarinho;
-    private Elemento fundo1;
-    private Elemento fundo2;
+    private Passarinho passarinho;
+    private Fundo fundo1;
+    private Fundo fundo2;
+
+    private ArrayList<ElementoGrafico> graficos;
+
+    public Flappy() {
+        graficos = new ArrayList<ElementoGrafico>();
+    }
 
 	private void rodar() {
 		while(rodando) {
@@ -36,9 +42,11 @@ public class Flappy{
         passarinho.descarregar();
         fundo1.descarregar();
         fundo2.descarregar();
+
     }
 
 	private void atualizar() {
+        
         if(fundo1.getPosX() <= -1200){
             fundo1.mover(fundo2.getPosX()+1180,0);
         } else {
@@ -50,7 +58,10 @@ public class Flappy{
         } else {
             fundo2.mover(fundo2.getPosX()-1, fundo2.getPosY());
         }
-
+        
+        passarinho.atualizar();
+        fundo1.atualizar();
+        fundo2.atualizar();
 
 	}
 	
@@ -67,12 +78,15 @@ public class Flappy{
 		janela = new Janela("Flappy Bird");
 		SetTargetFPS(60);
         
-        
-        //ChangeDirectory("C:/Users/Leonardo/Documents/Code/flappy/src/main/java/com/ufrgs/resources");
-        passarinho = new Elemento("src/main/resources/passarinho.png");
-        fundo1 = new Elemento("src/main/resources/fundo.png");
-        fundo2 = new Elemento("src/main/resources/fundo.png");
-        
+        passarinho = new Passarinho("src/main/resources/passarinho.png");
+        graficos.add(passarinho);
+
+        fundo1 = new Fundo("src/main/resources/fundo.png", 1);
+        graficos.add(fundo1);
+
+        fundo2 = new Fundo("src/main/resources/fundo.png", 1);
+        graficos.add(fundo2);
+
         fundo2.mover(1180, 0);
 		rodando = true;
         rodar();
