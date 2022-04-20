@@ -16,6 +16,9 @@ public class Flappy{
     private Passarinho passarinho;
     private Cenario fundo1;
     private Cenario fundo2;
+    private Cenario fundo3;
+
+    private Cano tronco;
 
     private ArrayList<ElementoGrafico> graficos;
 
@@ -56,10 +59,12 @@ public class Flappy{
 	
 	private void renderizar() {
 		BeginDrawing();
-            ClearBackground(YELLOW);
-            fundo1.renderizar(1.5);
-            fundo2.renderizar(1.5);
-            passarinho.renderizar(0.2);
+            ClearBackground(BLUE);
+            fundo1.renderizar();
+            fundo2.renderizar();
+            fundo3.renderizar();
+            passarinho.renderizar();
+            tronco.renderizar();
 		EndDrawing();
 	}
 
@@ -67,16 +72,23 @@ public class Flappy{
 		janela = new Janela("Flappy Bird");
 		SetTargetFPS(60);
         
-        passarinho = new Passarinho("src/main/resources/passarinho.png");
+        passarinho = new Passarinho("src/main/resources/passarinho.png", 0.2);
         graficos.add(passarinho);
 
-        fundo1 = new Cenario("src/main/resources/fundo.png", 1);
+        fundo1 = new Cenario("src/main/resources/fundo.png", 1.5, 0.7);
         graficos.add(fundo1);
 
-        fundo2 = new Cenario("src/main/resources/fundo.png", 1);
+        fundo2 = new Cenario("src/main/resources/fundo.png", 1.5, 0.7);
         graficos.add(fundo2);
 
+        fundo3 = new Cenario("src/main/resources/fundo.png", 1.5, 0.7);
+        graficos.add(fundo3);
+
+        tronco = new Cano(1);
+        graficos.add(tronco);
+
         fundo2.mover(1180, 0);
+        fundo3.mover(2360,0);
 		rodando = true;
         rodar();
 	}

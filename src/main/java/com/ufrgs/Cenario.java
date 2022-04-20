@@ -7,15 +7,15 @@ public class Cenario extends ElementoGrafico{
 
     private double vScroll;
 
-    public Cenario(String caminho, double vScroll){
-        super(caminho);
+    public Cenario(String caminho, double escala, double vScroll){
+        super(caminho, escala);
         this.vScroll = vScroll;
     }
 
     public void atualizar() {
-        mover(getPosX() - 1, 0);
-        if(pos.x() < -1200) {
-            mover(1180, 0);
+        mover(getPosX() - vScroll, getPosY());
+        if(pos.x() <= -1180) {
+            mover(2360, getPosY());
         }
     }
 

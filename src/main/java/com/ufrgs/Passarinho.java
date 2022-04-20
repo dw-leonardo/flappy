@@ -8,8 +8,8 @@ public class Passarinho extends ElementoGrafico{
     private double vVertical;
     private double angulo;
     
-    public Passarinho(String caminho) {
-        super(caminho);
+    public Passarinho(String caminho, double escala) {
+        super(caminho, escala);
         vVertical = 0;
         angulo = 0;
         mover(200, getPosY());
@@ -28,7 +28,17 @@ public class Passarinho extends ElementoGrafico{
         }
     }
 
-    public void renderizar(double escala) {
+    public void renderizar() {
         DrawTextureEx(this.textura, this.pos, (float) angulo, (float) escala, WHITE);
+    }
+
+    public boolean testaColisao(ElementoGrafico e) {
+        if((pos.x() < e.getPosX()) && (pos.y() < e.getPosY())) {
+            if(col.x() > e.getPosX() && col.y() > e.getPosY()) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }

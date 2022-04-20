@@ -1,16 +1,23 @@
 package com.ufrgs;
 
-//import static com.raylib.Raylib.Texture;
 import static com.raylib.Jaylib.*;
 
 public class ElementoGrafico {
 
+    //referente a coordenada do canto esquerdo superior de renderizacao do ElementoGrafico.
     protected Vector2 pos;
+    /* Vetor coluna e referente a uma caixa de colisao do ElementoGrafico.
+    col deve ter ambas coordenadas maior do que pos.
+    O tamanho pratico do ElementoGrafico e col-pos. */
     protected Vector2 col;
     protected Texture textura;
 
-    public ElementoGrafico(String caminho) {
+    protected double escala;
+
+    public ElementoGrafico(String caminho, double escala) {
         this.pos = new Vector2(0,0);
+        this.col = new Vector2(10,10);
+        this.escala = escala;
         this.textura = LoadTexture(caminho);
     }
 
@@ -22,24 +29,30 @@ public class ElementoGrafico {
 
     }
 
-    public void renderizar(double escala){
+    public void renderizar(){
         DrawTextureEx(this.textura, this.pos, 0, (float) escala, WHITE);
     }
 
-
     public void mover(double x, double y) {
+    
+        /* A posicao da caixa de colisao deve ser col-pos(tamanho do ElementoGrafico) apos a coordenada
+        do canto esquerdo superior do ElementoGrafico */
+        col.x((float) (col.x() - pos.x() + x));
+        col.y((float) (col.y() - pos.y() + y));
+
         pos.x((float) x);
         pos.y((float) y);
+        
     }
 
-    public boolean testaColisao(ElementoGrafico e) {
-        if((pos.x() < e.getPosX()) && (pos.y() < e.getPosY())) {
-            if(col.x() > e.getPosX() && col.y() > e.getPosY()) {
-                return true;
-            }
+    public boolean testaColisao(Cano c) {
+        
+        if(this.testaColisao(c)||this.testaColisao(c)) {
+            return true;
+        } else {
+            return false;
         }
 
-        return false;
     }
 
     public double getPosX() {
