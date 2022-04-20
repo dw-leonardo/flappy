@@ -34,9 +34,7 @@ public class Passarinho extends ElementoGrafico{
 
     public boolean testaColisao(ElementoGrafico e) {
         if((pos.x() < e.getPosX()) && (pos.y() < e.getPosY())) {
-            if(col.x() > e.getPosX() && col.y() > e.getPosY()) {
-                return true;
-            }
+                
         }
 
         return false;
