@@ -1,5 +1,7 @@
 package com.ufrgs;
 
+import java.util.ArrayList;
+
 import static com.raylib.Raylib.*;
 import static com.raylib.Jaylib.*;
 
@@ -8,22 +10,24 @@ public class Passarinho extends ElementoGrafico{
     private double vVertical;
     private double angulo;
     
-    public Passarinho(String caminho, double escala) {
-        super(caminho, escala);
+    public Passarinho(String caminho, double escala, double xInicial, double yInicial, double largura, double altura) {
+        super(caminho, escala, xInicial, yInicial, largura, altura);
         vVertical = 0;
         angulo = 0;
-        mover(200, getPosY());
     }
 
-    public void atualizar() {
+    public void atualizar() throws PerdeuException{
         //esse bloco controla a gravidade
+
+        if((pos.y() < 0) || ((pos.y() + altura) > 720)) throw new PerdeuException();
+
         vVertical = vVertical + 0.1;
         mover(getPosX(), getPosY() + vVertical);
         angulo = angulo + 0.2;
 
         if(IsKeyPressed(KEY_SPACE)) {
             mover(getPosX(), getPosY() - 10);
-            vVertical = -5;
+            vVertical = -3;
             angulo = -20;
         }
     }
@@ -32,11 +36,9 @@ public class Passarinho extends ElementoGrafico{
         DrawTextureEx(this.textura, this.pos, (float) angulo, (float) escala, WHITE);
     }
 
-    public boolean testaColisao(ElementoGrafico e) {
-        if((pos.x() < e.getPosX()) && (pos.y() < e.getPosY())) {
-                
-        }
+    public boolean testaColisao(Cano cano) throws PerdeuException{
 
         return false;
+        
     }
 }

@@ -21,4 +21,12 @@ public class Janela {
             return false;
         }
     }
+
+    public int getLargura() {
+        return largura;
+    }
+
+    public int getAltura() {
+        return altura;
+    }
 }

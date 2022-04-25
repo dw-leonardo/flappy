@@ -4,7 +4,7 @@ import static com.raylib.Jaylib.*;
 
 public class Cenario extends ElementoGrafico{
 
-    private double vScroll;
+    protected double vScroll;
 
     public Cenario(String caminho, double escala, double xInicial, double yInicial, double largura, double altura, double vScroll) {
 
@@ -18,6 +18,11 @@ public class Cenario extends ElementoGrafico{
         if(pos.x() <= -largura) {
             mover(2360, getPosY());
         }
+
+    }
+
+    public double getvScroll() {
+        return vScroll;
     }
 
 }

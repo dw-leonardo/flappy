@@ -55,7 +55,7 @@ public class ElementoGrafico {
 
     }   
 
-    public void atualizar() {
+    public void atualizar() throws PerdeuException{
 
     }
 
@@ -70,16 +70,6 @@ public class ElementoGrafico {
         pos.x((float) x);
         pos.y((float) y);
         
-    }
-
-    public boolean testaColisao(Cano c) {
-        
-        if(this.testaColisao(c)||this.testaColisao(c)) {
-            return true;
-        } else {
-            return false;
-        }
-
     }
 
     public double getPosX() {
