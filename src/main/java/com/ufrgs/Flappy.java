@@ -81,7 +81,7 @@ public class Flappy{
 
 	public void inicializar() {
 		janela = new Janela("Flappy Bird");
-		SetTargetFPS(120);
+		SetTargetFPS(60);
 
         fundo1 = new Cenario("src/main/resources/fundo.png", 1.5, 0, 0, 1180, 800, 0.7);
         graficos.add(fundo1);
@@ -99,6 +99,7 @@ public class Flappy{
             Cano cano =  new Cano(1, 1280 + i*400);
             graficos.add(cano);
             obstaculos.add(cano);
+            cano.randomizarPos(); 
         } 
 
         while(!IsKeyPressed(KEY_SPACE)) renderizar();

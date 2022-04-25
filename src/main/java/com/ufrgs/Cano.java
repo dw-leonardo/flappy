@@ -19,17 +19,22 @@ public class Cano extends ElementoGrafico{
 
     public void atualizar(){
 
-        superior.mover(superior.getPosX() - 1.3, superior.getPosY());
-        inferior.mover(inferior.getPosX() - 1.3, inferior.getPosY());
+        //superior.mover(superior.getPosX() - 1.3, superior.getPosY());
+        //inferior.mover(inferior.getPosX() - 1.3, inferior.getPosY());
+
+        superior.atualizar();
+        inferior.atualizar(); 
+
         if(superior.pos.x() <= -107) {
-            Random r = new Random();
-            superior.mover(2360, r.nextInt(500)-250);
-            inferior.mover(2370, superior.getPosY()+470);     
+            randomizarPos();     
         }
 
-        //superior.atualizar();
-        //inferior.atualizar();   
+    }
 
+    public void randomizarPos() {
+        Random r = new Random();
+        superior.mover(superior.getPosX(), r.nextInt(500)-250);
+        inferior.mover(inferior.getPosX(), superior.getPosY()+470);  
     }
 
     public void mover(double x, double y) {
