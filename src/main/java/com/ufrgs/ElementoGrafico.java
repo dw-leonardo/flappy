@@ -8,16 +8,24 @@ public class ElementoGrafico {
     protected Vector2 pos;
     protected double largura;
     protected double altura;
+    protected double escala;
+
     protected Texture textura;
 
-    protected double escala;
+    public ElementoGrafico() {
+        this.pos = new Vector2();
+        this.largura = 0;
+        this.altura = 0;
+        this.escala = 0;
+        this.textura = null;
+    }
 
     public ElementoGrafico(String caminho, double escala) {
 
         this.pos = new Vector2(0, 0);
         this.escala = escala;
         this.textura = LoadTexture(caminho);
-        
+
     }
 
     public ElementoGrafico(String caminho, double escala, double xInicial, double yInicial) {
@@ -42,8 +50,8 @@ public class ElementoGrafico {
 
 
     public void descarregar() {
-
-        UnloadTexture(this.textura);
+        
+        if(this.textura != null) UnloadTexture(this.textura);
 
     }   
 
