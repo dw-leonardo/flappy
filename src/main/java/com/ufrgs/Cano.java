@@ -2,18 +2,18 @@ package com.ufrgs;
 
 import java.util.Random;
 
-public class Cano extends ElementoGrafico{
+public class Cano extends Cenario{
     
     private Cenario superior;
     private Cenario inferior;
 
-    public Cano(int semente, double xInicial) {
+    public Cano(String caminho, double escala, double xInicial, double yInicial, double largura, double altura, double vScroll) {
 
-        super();
+        super(caminho, escala, xInicial, yInicial, largura, altura, vScroll);
 
-        superior = new Cenario("src/main/resources/tronco.png", 0.3, xInicial, 0, 107, 289, 1.3);
+        superior = new Cenario(caminho, escala, xInicial, yInicial, largura, altura, vScroll);
 
-        inferior = new Cenario("src/main/resources/tronco.png", 0.3 , xInicial, 500, 107, 289, 1.3);
+        inferior = new Cenario(caminho, escala, xInicial, yInicial + 500, largura, altura, vScroll);
 
     }
 
@@ -21,6 +21,8 @@ public class Cano extends ElementoGrafico{
 
         //superior.mover(superior.getPosX() - 1.3, superior.getPosY());
         //inferior.mover(inferior.getPosX() - 1.3, inferior.getPosY());
+
+        super.atualizar();
 
         superior.atualizar();
         inferior.atualizar(); 
@@ -39,6 +41,7 @@ public class Cano extends ElementoGrafico{
 
     }
 
+    /*
     public void mover(double x, double y) {
 
         pos.x((float) x);
@@ -51,6 +54,7 @@ public class Cano extends ElementoGrafico{
         inferior.pos.y((float) y + 470);
         
     }
+    */
 
     @Override
     public void renderizar() {
