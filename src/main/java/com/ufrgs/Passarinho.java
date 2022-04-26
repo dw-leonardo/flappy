@@ -1,7 +1,5 @@
 package com.ufrgs;
 
-import java.util.ArrayList;
-
 import static com.raylib.Raylib.*;
 import static com.raylib.Jaylib.*;
 

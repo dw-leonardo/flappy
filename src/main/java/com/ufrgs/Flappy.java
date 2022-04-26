@@ -15,10 +15,6 @@ public class Flappy{
 
     private Passarinho passarinho;
 
-    private Cenario fundo1;
-    private Cenario fundo2;
-    private Cenario fundo3;
-
     private ArrayList<ElementoGrafico> graficos;
     private ArrayList<Cano> obstaculos;
 

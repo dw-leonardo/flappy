@@ -1,7 +1,5 @@
 package com.ufrgs;
 
-import static com.raylib.Jaylib.*;
-
 public class Cenario extends ElementoGrafico{
 
     protected double vScroll;
