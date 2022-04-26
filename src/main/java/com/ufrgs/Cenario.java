@@ -18,7 +18,6 @@ public class Cenario extends ElementoGrafico{
         if(pos.x() <= -largura) {
             mover(2360, getPosY());
         }
-
     }
 
     public double getvScroll() {

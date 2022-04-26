@@ -83,19 +83,15 @@ public class Flappy{
 		janela = new Janela("Flappy Bird");
 		SetTargetFPS(60);
 
-        fundo1 = new Cenario("src/main/resources/fundo.png", 1.5, 0, 0, 1180, 800, 0.7);
-        graficos.add(fundo1);
-
-        fundo2 = new Cenario("src/main/resources/fundo.png", 1.5, 1180, 0, 1180, 800, 0.7);
-        graficos.add(fundo2);
-
-        fundo3 = new Cenario("src/main/resources/fundo.png", 1.5, 2360, 0, 1180, 800, 0.7);
-        graficos.add(fundo3);
+        for(int i = 0; i < 3; i++) {
+            ElementoGrafico fundo = new Cenario("src/main/resources/fundo.png", 1.5, 1180*i, 0, 1180, 800, 0.7);
+            graficos.add(fundo);
+        }
 
         passarinho = new Passarinho("src/main/resources/passarinho.png", 0.2, 200, 360, 112, 104); 
-        graficos.add(passarinho);
+        graficos.add(passarinho);  
 
-        for(int i = 0; i < 6; i++){
+        for(int i = 0; i < 6; i++) {
             Cano cano =  new Cano(1, 1280 + i*400);
             graficos.add(cano);
             obstaculos.add(cano);

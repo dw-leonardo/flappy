@@ -13,7 +13,7 @@ public class Cano extends ElementoGrafico{
 
         superior = new Cenario("src/main/resources/tronco.png", 0.3, xInicial, 0, 107, 289, 1.3);
 
-        inferior = new Cenario("src/main/resources/tronco.png", 0.3, xInicial, 470, 107, 289, 1.3);
+        inferior = new Cenario("src/main/resources/tronco.png", 0.3 , xInicial, 500, 107, 289, 1.3);
 
     }
 
@@ -31,10 +31,12 @@ public class Cano extends ElementoGrafico{
 
     }
 
-    public void randomizarPos() {
+    public void randomizarPos() { 
+
         Random r = new Random();
         superior.mover(superior.getPosX(), r.nextInt(500)-250);
         inferior.mover(inferior.getPosX(), superior.getPosY()+470);  
+
     }
 
     public void mover(double x, double y) {
@@ -50,6 +52,7 @@ public class Cano extends ElementoGrafico{
         
     }
 
+    @Override
     public void renderizar() {
 
         superior.renderizar();

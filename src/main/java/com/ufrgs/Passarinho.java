@@ -19,11 +19,11 @@ public class Passarinho extends ElementoGrafico{
     public void atualizar() throws PerdeuException{
         //esse bloco controla a gravidade
 
-        if((pos.y() < 0) || ((pos.y() + altura) > 720)) throw new PerdeuException();
+        if((pos.y() <= 0) || ((pos.y() + altura) >= 720)) throw new PerdeuException();
 
         vVertical = vVertical + 0.1;
         mover(getPosX(), getPosY() + vVertical);
-        angulo = angulo + 0.2;
+        angulo = angulo + 0.25;
 
         if(IsKeyPressed(KEY_SPACE)) {
             mover(getPosX(), getPosY() - 10);
@@ -32,11 +32,15 @@ public class Passarinho extends ElementoGrafico{
         }
     }
 
+    @Override
     public void renderizar() {
+
         DrawTextureEx(this.textura, this.pos, (float) angulo, (float) escala, WHITE);
+
     }
 
-    public boolean testaColisao(Cano cano) throws PerdeuException{
+
+    public boolean testaColisao(Cano c) throws PerdeuException{
 
         return false;
         
