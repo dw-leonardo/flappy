@@ -72,23 +72,26 @@ public class Flappy{
             if(!rodando) {
                 DrawText("Pressione 'ESPACO' para jogar", 380, janela.getAltura()/2, 30, BLACK);
             }
+            for(Cano c : obstaculos) {
+                DrawLine((int)c.getPosX(), (int)c.getPosY(), (int)c.getPosX(), (int)c.getPosY()+(int)c.getAltura(), BLUE);
+            }
 		EndDrawing();
 	}
 
 	public void inicializar() {
 		janela = new Janela("Flappy Bird");
-		SetTargetFPS(240 );
+		SetTargetFPS(60);
 
         for(int i = 0; i < 3; i++) {
             ElementoGrafico fundo = new Cenario("src/main/resources/fundo.png", 1.5, 1180*i, 0, 1180, 800, 0.7);
             graficos.add(fundo);
         }
 
-        passarinho = new Passarinho("src/main/resources/passarinho.png", 0.2, 200, 360, 112, 104); 
+        passarinho = new Passarinho("src/main/resources/passarinho.png", 0.2, 200, 360, 80, 100); 
         graficos.add(passarinho);  
 
         for(int i = 0; i < 6; i++) {
-            Cano cano =  new Cano("src/main/resources/tronco.png", 0.3, (i*400) + 1280, 0, 107, 289, 1.3);
+            Cano cano =  new Cano("src/main/resources/tronco.png", 0.3, (i*400) + 1280, -500, 100, 550, 1.3);
             graficos.add(cano);
             obstaculos.add(cano);
             cano.randomizarPos(); 

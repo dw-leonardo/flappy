@@ -6,6 +6,7 @@ public class Cano extends Cenario{
     
     private Cenario superior;
     private Cenario inferior;
+    private boolean pontuavel; //define se pode fazer um ponto ao passar pelo cano
 
     public Cano(String caminho, double escala, double xInicial, double yInicial, double largura, double altura, double vScroll) {
 
@@ -13,13 +14,13 @@ public class Cano extends Cenario{
 
         superior = new Cenario(caminho, escala, xInicial, yInicial, largura, altura, vScroll);
 
-        inferior = new Cenario(caminho, escala, xInicial, yInicial + 500, largura, altura, vScroll);
+        inferior = new Cenario(caminho, escala, xInicial, yInicial + 1000, largura, altura, vScroll);
 
     }
 
     public void atualizar(){
 
-        //superior.mover(superior.getPosX() - 1.3, superior.getPosY());
+        //superior.mover(superior.getPosX() - 1 .3, superior.getPosY());
         //inferior.mover(inferior.getPosX() - 1.3, inferior.getPosY());
 
         super.atualizar();
@@ -36,8 +37,9 @@ public class Cano extends Cenario{
     public void randomizarPos() { 
 
         Random r = new Random();
-        superior.mover(superior.getPosX(), r.nextInt(500)-250);
-        inferior.mover(inferior.getPosX(), superior.getPosY()+470);  
+        superior.mover(superior.getPosX(), r.nextInt(400) - 500);
+        inferior.mover(inferior.getPosX(), superior.getPosY() + 800);  
+        super.mover(superior.getPosX(), superior.getPosY());
 
     }
 
@@ -70,6 +72,14 @@ public class Cano extends Cenario{
         superior.descarregar();
         inferior.descarregar();
         
+    }
+
+    public double getAltura() {
+        return superior.altura;
+    }
+
+    public double getLargura() {
+        return superior.largura;
     }
 
 }

@@ -39,8 +39,15 @@ public class Passarinho extends ElementoGrafico{
 
 
     public boolean testaColisao(Cano c) throws PerdeuException{
+        if((pos.x() < c.getPosX()) && (largura+pos.x() > c.getPosX())) {
+            if((pos.y() < c.getPosY()+c.getAltura()) || (pos.y() > c.getPosY()+c.getAltura()+200)) {
+                
+                System.out.println("colidiu" + pos.y());
+                //throw new PerdeuException();
+            }
+            
+        }
 
         return false;
-        
     }
 }
