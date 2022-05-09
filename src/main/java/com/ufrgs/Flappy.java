@@ -84,27 +84,30 @@ public class Flappy{
             System.out.println("Você Perdeu!");
             rodando = false;
         }
-        
 
 	}
 	
 	private void renderizar() {
 		BeginDrawing();
-            ClearBackground(BLUE);
             for(ElementoGrafico i : graficos){
                 i.renderizar();
-                }
+            }
+
             if(!rodando) {
                 DrawText("Pressione 'ESPACO' para jogar", 380, 640, 30, BLACK);
             }
+
             //debug
+            /*
             for(ElementoGrafico c : graficos) {
                 DrawRectangleLines((int)c.getPosX(), (int)c.getPosY(), (int)c.getLargura(), (int)c.getAltura(), BLUE);
             }
             for(ElementoGrafico c : obstaculos) {
                 DrawRectangleLines((int)c.getPosX(), (int)(c.getPosY()+c.getAltura()+220), (int)c.getLargura(), (int)c.getAltura(), BLUE);
             }
-            DrawText(String.format("%d",pontos) , 590, 50, 50, BLACK);
+            */
+
+            DrawText(String.format("%d",pontos) , 590, 50, 50, BLACK); //desenha a pontuaco na tela
 		EndDrawing();
 	}
 

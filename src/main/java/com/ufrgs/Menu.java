@@ -4,40 +4,37 @@ import static com.raylib.Jaylib.*;
 
 import java.util.ArrayList;
 
+
 public class Menu {
 
-    private final Color COR_FUNDO = new Color(252, 41, 35, 255);
-    private final Color COR_TEXTO = new Color(20, 74, 250, 255);
-    private final Color COR_BOTAO = new Color(250, 196, 20, 255);
-    private final Color COR_BOTAO2 = new Color(240, 195, 50, 255);
+    private final Color COR_FUNDO = new Color(136, 35, 31, 255);
+    private final Color COR_TEXTO = new Color(19, 66, 150, 255);
+    private final Color COR_BOTAO = new Color(210, 166, 47, 255);
+    private final Color COR_BOTAO2 = new Color(255, 166, 80, 255);
 
     private ArrayList<Score> pontuacoes;
     private Janela janela;
 
-    public Menu() {
-
-    }
-
     public void abrir() {
-        boolean escolhendo = true;
         janela = new Janela("Flappy Pecker");
         SetTargetFPS(120);
 
-        while(escolhendo) {
+        boolean deveFechar = false;
+        while(!deveFechar) {
             
             BeginDrawing();
 
-                ClearBackground(RED);
-                DrawText("Flappy Pecker", 300, 100, 100, BLUE);
+                ClearBackground(COR_FUNDO);
+                DrawText("Flappy Pecker", 300, 100, 100, COR_TEXTO);
 
                 DrawRectangle(400, 300, 400, 50, COR_BOTAO);
-                DrawText("Jogar", 550, 310, 35, BLUE);
+                DrawText("Jogar", 550, 310, 35, COR_TEXTO);
 
                 DrawRectangle(400, 400, 400, 50, COR_BOTAO);
-                DrawText("Pontuacoes", 500, 410, 35, BLUE);
+                DrawText("Pontuacoes", 500, 410, 35, COR_TEXTO);
 
                 DrawRectangle(400, 500, 400, 50, COR_BOTAO);
-                DrawText("Sair", 560, 510, 35, BLUE);
+                DrawText("Sair", 560, 510, 35, COR_TEXTO);
 
             EndDrawing();
 
@@ -45,20 +42,20 @@ public class Menu {
                 if((400 < GetMouseX()) && (GetMouseX() < 800)) {
                     if((300 < GetMouseY()) && (GetMouseY() < 350)) {
                         jogar();
-                        return;
                     }
                     if(400 < GetMouseY() && GetMouseY() < 450) {
                         pontuacoes();
                     }
                     if(500 < GetMouseY() && GetMouseY() < 550) {
-                        janela.deveFechar();
+                        deveFechar = true;
+                        janela.fechar();
                     }
                 }
             }
         }
     }
 
-    public void jogar() {
+    private void jogar() {
         Flappy jogo = new Flappy();
         int scorejogador = jogo.inicializar();
         boolean digitando = true;
@@ -69,9 +66,9 @@ public class Menu {
                 DrawText("Perdeu!", 500, 200, 50, COR_TEXTO);
                 DrawText("Seu score: " + scorejogador, 450, 300, 50, COR_TEXTO);
                 DrawText("Digite seu nome: " + nomejogador, 300, 400, 50, COR_TEXTO);
-                if(GetCharPressed()!=0) {
-                    nomejogador = nomejogador + (char)GetCharPressed();
-                    System.out.println("hello");
+                char c = (char)GetCharPressed();
+                if(c!=0) {
+                    nomejogador = nomejogador + c;
                 }
                 if(IsKeyPressed(KEY_ENTER) && GetCharPressed() == 0)
                 {
@@ -81,10 +78,9 @@ public class Menu {
             EndDrawing();
         }
 
-
-
+        //esse bloco le, adiciona, ordena e imprime
         pontuacoes = (ArrayList<Score>) ManipuladorSerializaveis.desserializa("src/main/pontuacoes/pontuacoes.poo");
-        pontuacoes.add(new Score("zuqui", scorejogador));
+        pontuacoes.add(new Score(nomejogador, scorejogador));
         pontuacoes.sort(new OrdenadorScores());
 
         if(pontuacoes.size()>10) {
@@ -94,13 +90,13 @@ public class Menu {
         ManipuladorSerializaveis.serializa("src/main/pontuacoes/pontuacoes.poo", pontuacoes); 
     }
 
-    public void pontuacoes() {
-        boolean escolhendo = true;
+    private void pontuacoes() {
+        boolean devesair = false;
         ArrayList<Score> pontuacoes = (ArrayList<Score>)ManipuladorSerializaveis.desserializa("src/main/pontuacoes/pontuacoes.poo");
 
-        while(escolhendo) {
+        while(!devesair) {
             BeginDrawing();
-                ClearBackground(RED);
+                ClearBackground(COR_FUNDO);
                 DrawText("Ranking", 180, 40, 50, COR_TEXTO);
                 int i;
                 for (i = 0; i < 5; i++) {
@@ -112,10 +108,11 @@ public class Menu {
                     DrawText(pontuacoes.get(i).getNome(), 200, 125 + 40*i , 30, COR_TEXTO);
                     DrawText(String.format("%d", pontuacoes.get(i).getPontos()), 1000, 125+40*i, 30, COR_TEXTO);
                 }
-
-                if(IsKeyPressed(KEY_ENTER))
-                {
-                    escolhendo = false;
+                
+                DrawText("Pressione <-- para voltar", 180, 600, 25, COR_TEXTO);
+                
+                if(IsKeyPressed(KEY_BACKSPACE)) {
+                    devesair = true;
                 }
             EndDrawing();
         }

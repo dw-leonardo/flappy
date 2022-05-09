@@ -1,6 +1,6 @@
 package com.ufrgs;
 
-import static com.raylib.Raylib.*;
+import static com.raylib.Jaylib.*;
 
 public class Janela {
     
@@ -20,6 +20,10 @@ public class Janela {
         } else {
             return false;
         }
+    }
+
+    public void fechar() {
+        CloseWindow();
     }
 
     public int getLargura() {
