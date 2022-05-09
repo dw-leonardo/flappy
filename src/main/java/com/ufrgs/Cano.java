@@ -1,7 +1,6 @@
 package com.ufrgs;
 
 import java.util.Random;
-import static com.raylib.Jaylib.*;
 
 public class Cano extends Cenario{
     
@@ -50,7 +49,7 @@ public class Cano extends Cenario{
 
         superior.renderizar();
         inferior.renderizar();
-        
+
         //debug DrawText(String.format("%b", pontuavel), (int)inferior.getPosX(), (int)inferior.getPosY(), 20, BLACK);
 
     }

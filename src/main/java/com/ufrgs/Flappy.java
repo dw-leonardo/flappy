@@ -35,6 +35,7 @@ public class Flappy{
 			if(janela.deveFechar() == true) {
 				rodando = false;
 			}
+
 		}
 
         fechar();
@@ -78,7 +79,6 @@ public class Flappy{
             if(!rodando) {
                 DrawText("Pressione 'ESPACO' para jogar", 380, janela.getAltura()/2, 30, BLACK);
             }
-            DrawText(String.format("%d",pontos) , janela.getLargura()/2-20, 50, 30, BLACK);
             //debug
             for(ElementoGrafico c : graficos) {
                 DrawRectangleLines((int)c.getPosX(), (int)c.getPosY(), (int)c.getLargura(), (int)c.getAltura(), BLUE);
@@ -86,10 +86,11 @@ public class Flappy{
             for(ElementoGrafico c : obstaculos) {
                 DrawRectangleLines((int)c.getPosX(), (int)(c.getPosY()+c.getAltura()+220), (int)c.getLargura(), (int)c.getAltura(), BLUE);
             }
+            DrawText(String.format("%d",pontos) , janela.getLargura()/2-50, 50, 50, BLACK);
 		EndDrawing();
 	}
 
-	public void inicializar() {
+	public Score inicializar() {
 		janela = new Janela("Flappy Bird");
 		SetTargetFPS(120);
 
@@ -106,12 +107,18 @@ public class Flappy{
             graficos.add(cano);
             obstaculos.add(cano);
             cano.randomizarPos(); 
-        } 
+        }
+        renderizar();
+
+        Menu menu = new Menu();
+        menu.abrir();
 
         while(!IsKeyPressed(KEY_SPACE)) renderizar();
 
 		rodando = true;
         loop();
+
+        return new Score("zuqui", pontos);
 	}
 
 }

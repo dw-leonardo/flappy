@@ -45,12 +45,13 @@ public class Passarinho extends ElementoGrafico{
         if((pos.x() < c.getPosX()) && (largura+pos.x() > c.getPosX())) {
             if((pos.y() < c.getPosY()+c.getAltura()) || (pos.y() > c.getPosY()+c.getAltura()+220)) {
                 System.out.println("colidiu" + pos.y());
-                //throw new PerdeuException();
+                throw new PerdeuException();
             }
         }
         if((pos.x() > c.getPosX()) && (pos.x() < (c.getPosX() + c.getLargura()))) {
             if((pos.y() < (c.getPosY()+c.getAltura())) || ((pos.y() + altura) > c.getPosY()+c.getAltura()+220)) {
                 System.out.println("colidiu" + pos.y());
+                throw new PerdeuException();
             }
         }
         
