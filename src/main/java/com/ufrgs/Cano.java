@@ -1,6 +1,7 @@
 package com.ufrgs;
 
 import java.util.Random;
+import static com.raylib.Jaylib.*;
 
 public class Cano extends Cenario{
     
@@ -16,18 +17,20 @@ public class Cano extends Cenario{
 
         inferior = new Cenario(caminho, escala, xInicial, yInicial + 1000, largura, altura, vScroll);
 
+        pontuavel = true;
     }
 
     public void atualizar(){
-
-        //superior.mover(superior.getPosX() - 1 .3, superior.getPosY());
-        //inferior.mover(inferior.getPosX() - 1.3, inferior.getPosY());
 
         super.atualizar();
 
         superior.atualizar();
         inferior.atualizar(); 
 
+        if(pos.x() > 1000) {
+            //se o cano ainda tem que entrar na tela, ele deve ser pontuavel
+            pontuavel = true;
+        }
         if(superior.pos.x() <= -107) {
             randomizarPos();     
         }
@@ -40,29 +43,15 @@ public class Cano extends Cenario{
         superior.mover(superior.getPosX(), r.nextInt(400) - 500);
         inferior.mover(inferior.getPosX(), superior.getPosY() + 800);  
         super.mover(superior.getPosX(), superior.getPosY());
-
     }
-
-    /*
-    public void mover(double x, double y) {
-
-        pos.x((float) x);
-        pos.y((float) y);
-
-        superior.pos.x((float) x);
-        superior.pos.y((float) y);
-
-        inferior.pos.x((float) x);
-        inferior.pos.y((float) y + 470);
-        
-    }
-    */
 
     @Override
     public void renderizar() {
 
         superior.renderizar();
         inferior.renderizar();
+        
+        //debug DrawText(String.format("%b", pontuavel), (int)inferior.getPosX(), (int)inferior.getPosY(), 20, BLACK);
 
     }
 
@@ -80,6 +69,14 @@ public class Cano extends Cenario{
 
     public double getLargura() {
         return superior.largura;
+    }
+
+    public boolean isPontuavel() {
+        return pontuavel;
+    }
+
+    public void pontuar() {
+        pontuavel = false;
     }
 
 }

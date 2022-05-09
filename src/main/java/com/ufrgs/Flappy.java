@@ -18,6 +18,8 @@ public class Flappy{
     private ArrayList<ElementoGrafico> graficos;
     private ArrayList<Cano> obstaculos;
 
+    private int pontos;
+
     public Flappy() {
         graficos = new ArrayList<ElementoGrafico>();
         obstaculos = new ArrayList<Cano>();
@@ -54,6 +56,10 @@ public class Flappy{
             }
             for(Cano i : obstaculos) {
                 passarinho.testaColisao(i);
+                if((i.getPosX()+i.getLargura()<passarinho.getPosX()) && i.isPontuavel()) {
+                    pontos++;
+                    i.pontuar();
+                }
             }
         } catch (PerdeuException e) {
             System.out.println("Você Perdeu!");
@@ -72,26 +78,31 @@ public class Flappy{
             if(!rodando) {
                 DrawText("Pressione 'ESPACO' para jogar", 380, janela.getAltura()/2, 30, BLACK);
             }
-            for(Cano c : obstaculos) {
-                DrawLine((int)c.getPosX(), (int)c.getPosY(), (int)c.getPosX(), (int)c.getPosY()+(int)c.getAltura(), BLUE);
+            DrawText(String.format("%d",pontos) , janela.getLargura()/2-20, 50, 30, BLACK);
+            //debug
+            for(ElementoGrafico c : graficos) {
+                DrawRectangleLines((int)c.getPosX(), (int)c.getPosY(), (int)c.getLargura(), (int)c.getAltura(), BLUE);
+            }
+            for(ElementoGrafico c : obstaculos) {
+                DrawRectangleLines((int)c.getPosX(), (int)(c.getPosY()+c.getAltura()+220), (int)c.getLargura(), (int)c.getAltura(), BLUE);
             }
 		EndDrawing();
 	}
 
 	public void inicializar() {
 		janela = new Janela("Flappy Bird");
-		SetTargetFPS(60);
+		SetTargetFPS(120);
 
         for(int i = 0; i < 3; i++) {
             ElementoGrafico fundo = new Cenario("src/main/resources/fundo.png", 1.5, 1180*i, 0, 1180, 800, 0.7);
             graficos.add(fundo);
         }
 
-        passarinho = new Passarinho("src/main/resources/passarinho.png", 0.2, 200, 360, 80, 100); 
+        passarinho = new Passarinho("src/main/resources/passarinho.png", 0.2, 200, 360, 80, 85); 
         graficos.add(passarinho);  
 
         for(int i = 0; i < 6; i++) {
-            Cano cano =  new Cano("src/main/resources/tronco.png", 0.3, (i*400) + 1280, -500, 100, 550, 1.3);
+            Cano cano =  new Cano("src/main/resources/tronco.png", 0.3, (i*400) + 1280, -500, 90, 580, 1.3);
             graficos.add(cano);
             obstaculos.add(cano);
             cano.randomizarPos(); 

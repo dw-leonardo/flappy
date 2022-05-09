@@ -83,4 +83,12 @@ public class ElementoGrafico {
     public double getPosY() {
         return pos.y();
     }
+
+    public double getLargura() {
+        return largura;
+    }
+
+    public double getAltura() {
+        return altura;
+    }
 }

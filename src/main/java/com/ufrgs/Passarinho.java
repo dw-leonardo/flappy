@@ -1,7 +1,11 @@
 package com.ufrgs;
 
-import static com.raylib.Raylib.*;
-import static com.raylib.Jaylib.*;
+import static com.raylib.Jaylib.WHITE;
+import static com.raylib.Raylib.DrawTextureEx;
+import static com.raylib.Raylib.IsKeyPressed;
+import static com.raylib.Raylib.KEY_SPACE;
+
+import com.raylib.Jaylib.Vector2;
 
 public class Passarinho extends ElementoGrafico{
 
@@ -33,21 +37,23 @@ public class Passarinho extends ElementoGrafico{
     @Override
     public void renderizar() {
 
-        DrawTextureEx(this.textura, this.pos, (float) angulo, (float) escala, WHITE);
+        DrawTextureEx(this.textura, new Vector2(pos.x()-10,pos.y()), (float) angulo, (float) escala, WHITE);
 
     }
 
-
     public boolean testaColisao(Cano c) throws PerdeuException{
         if((pos.x() < c.getPosX()) && (largura+pos.x() > c.getPosX())) {
-            if((pos.y() < c.getPosY()+c.getAltura()) || (pos.y() > c.getPosY()+c.getAltura()+200)) {
-                
+            if((pos.y() < c.getPosY()+c.getAltura()) || (pos.y() > c.getPosY()+c.getAltura()+220)) {
                 System.out.println("colidiu" + pos.y());
                 //throw new PerdeuException();
             }
-            
         }
-
+        if((pos.x() > c.getPosX()) && (pos.x() < (c.getPosX() + c.getLargura()))) {
+            if((pos.y() < (c.getPosY()+c.getAltura())) || ((pos.y() + altura) > c.getPosY()+c.getAltura()+220)) {
+                System.out.println("colidiu" + pos.y());
+            }
+        }
+        
         return false;
     }
 }
