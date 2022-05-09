@@ -1,4 +1,4 @@
-package com.ufrgs;
+package com.ufrgs.serializacao;
 
 import java.io.Serializable;
 

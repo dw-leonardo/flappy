@@ -1,8 +1,12 @@
-package com.ufrgs;
+package com.ufrgs.jogo;
 
 import static com.raylib.Jaylib.*;
 
 import java.util.ArrayList;
+
+import com.ufrgs.serializacao.ManipuladorSerializaveis;
+import com.ufrgs.serializacao.OrdenadorScores;
+import com.ufrgs.serializacao.Score;
 
 
 public class Menu {

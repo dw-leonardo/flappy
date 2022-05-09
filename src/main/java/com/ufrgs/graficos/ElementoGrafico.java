@@ -1,6 +1,8 @@
-package com.ufrgs;
+package com.ufrgs.graficos;
 
 import static com.raylib.Jaylib.*;
+
+import com.ufrgs.jogo.PerdeuException;
 
 public class ElementoGrafico {
 

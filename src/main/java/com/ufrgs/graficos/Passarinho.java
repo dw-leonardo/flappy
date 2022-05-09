@@ -1,4 +1,4 @@
-package com.ufrgs;
+package com.ufrgs.graficos;
 
 import static com.raylib.Jaylib.WHITE;
 import static com.raylib.Raylib.DrawTextureEx;
@@ -6,6 +6,7 @@ import static com.raylib.Raylib.IsKeyPressed;
 import static com.raylib.Raylib.KEY_SPACE;
 
 import com.raylib.Jaylib.Vector2;
+import com.ufrgs.jogo.PerdeuException;
 
 public class Passarinho extends ElementoGrafico{
 

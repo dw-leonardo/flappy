@@ -1,6 +1,11 @@
-package com.ufrgs;
+package com.ufrgs.jogo;
 
 import java.util.ArrayList;
+
+import com.ufrgs.graficos.Cano;
+import com.ufrgs.graficos.Cenario;
+import com.ufrgs.graficos.ElementoGrafico;
+import com.ufrgs.graficos.Passarinho;
 
 import static com.raylib.Raylib.*;
 import static com.raylib.Jaylib.*;

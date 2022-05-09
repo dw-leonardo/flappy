@@ -1,4 +1,4 @@
-package com.ufrgs;
+package com.ufrgs.graficos;
 
 public class Cenario extends ElementoGrafico{
 

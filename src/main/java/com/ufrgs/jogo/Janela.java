@@ -1,4 +1,4 @@
-package com.ufrgs;
+package com.ufrgs.jogo;
 
 import static com.raylib.Jaylib.*;
 
