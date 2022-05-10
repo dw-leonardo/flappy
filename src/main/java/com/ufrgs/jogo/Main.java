@@ -1,3 +1,5 @@
+//autores Bruno Richwicki e Leonardo Daudt Wolffenbuttel
+
 package com.ufrgs.jogo;
 
 public class Main {
