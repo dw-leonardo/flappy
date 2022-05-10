@@ -1,3 +1,12 @@
-com\ufrgs\Main.class
-com\ufrgs\Flappy.class
-com\ufrgs\Janela.class
+com\ufrgs\graficos\Cano.class
+com\ufrgs\graficos\Passarinho.class
+com\ufrgs\jogo\Janela.class
+com\ufrgs\jogo\Main.class
+com\ufrgs\serializacao\Score.class
+com\ufrgs\graficos\ElementoGrafico.class
+com\ufrgs\jogo\Flappy.class
+com\ufrgs\serializacao\ManipuladorSerializaveis.class
+com\ufrgs\serializacao\OrdenadorScores.class
+com\ufrgs\jogo\Menu.class
+com\ufrgs\graficos\Cenario.class
+com\ufrgs\jogo\PerdeuException.class
